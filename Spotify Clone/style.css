@@ -20,6 +20,7 @@ body{
 .right{
     width: 75vw;
     margin: 16px 0;
+    position: relative;
 }
 
 .home ul li{
@@ -162,4 +163,12 @@ body{
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.868);
     transition: all 0.3s ease-in-out;
+}
+
+.playbar{
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(139, 193, 139);
+    width: 100%;
+    padding: 12px;
 }
