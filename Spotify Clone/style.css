@@ -168,7 +168,14 @@ body{
 .playbar{
     position: absolute;
     bottom: 0;
-    background-color: rgb(139, 193, 139);
+    background-color: rgb(62, 210, 62);
     width: 100%;
     padding: 12px;
 }
+
+.songbuttons{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
