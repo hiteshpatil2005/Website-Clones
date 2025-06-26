@@ -72,6 +72,7 @@ body{
     display: flex;
     justify-content: space-between;
     background-color: rgb(34, 34, 34);
+    height: 76px;
 }
 
 .header > *{
@@ -87,7 +88,8 @@ body{
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    margin: 10px;
+    overflow-y: scroll;
+    max-height: 70vh;
 }
 
 .card{
@@ -122,4 +124,42 @@ body{
     right: 17px;
     opacity: 0;
     transition: all 1s ease-out;
+}
+
+.buttons > *{
+    margin: 0 12px;
+}
+
+.signupbtn{
+    background-color: rgb(34, 34, 34);
+    color: rgb(158, 155, 155);
+    font-weight: bold;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.signupbtn:hover{
+    font-size: 16px;
+    color: white;
+
+}
+
+.loginbtn{
+    background-color: white;
+    border-radius: 21px;
+    color: black;
+    padding: 10px;
+    width: 79px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+}
+
+.loginbtn:hover{
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.868);
+    transition: all 0.3s ease-in-out;
 }
