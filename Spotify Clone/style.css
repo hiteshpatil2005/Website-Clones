@@ -173,6 +173,12 @@ body{
     padding: 12px;
 }
 
+.songlist {
+    height: 644px;
+    overflow: auto;
+    margin: 44px 0;
+}
+
 .songbuttons{
     display: flex;
     justify-content: center;
@@ -180,10 +186,35 @@ body{
 }
 
 .songlist ul{
-    padding: 0 42px;
+    padding: 0 12px;
 }
 
 .songlist ul li {
     list-style-type: decimal;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    cursor: pointer;
+    padding: 12px 0;
+    border: 1px solid white;
+    margin: 12px 0;
+    padding: 13px;
+    border-radius: 5px;
 }
 
+.songlist .info {
+    font-size: 13px;
+    width: 344px;
+}
+
+.playnow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.playnow span {
+    font-size: 15px;
+    width: 64px;
+    padding: 12px;
+}
