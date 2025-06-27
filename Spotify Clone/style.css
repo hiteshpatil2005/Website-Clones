@@ -90,6 +90,7 @@ body{
 
 .spotifyPlaylists h1 {
     font-size: 26px;
+    padding: 16px;
 }
 
 .cardContainer{
@@ -278,6 +279,7 @@ body{
     color: rgb(34, 34, 34);
     font-size: 16px;
     font-weight: bold;
+    width: 250px;
 }
 
 @media (max-width: 1350px) {
@@ -323,7 +325,7 @@ body{
     }
 
     .spotifyPlaylists h1 {
-        margin-bottom: 12px;
+        padding: 16px;
         font-size: 24px;
     }
 
