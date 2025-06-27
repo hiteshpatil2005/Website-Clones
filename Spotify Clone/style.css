@@ -12,6 +12,10 @@ body{
     color: white;
 }
 
+.close {
+    display: none;
+}
+
 .left{
     width: 25vw;
     padding: 10px;
@@ -267,6 +271,7 @@ body{
     justify-content: space-between;
     align-items: center;
     padding: 0 12px;
+    margin: 20px 0;
 }
 
 .songinfo, .songtime {
@@ -297,7 +302,7 @@ body{
     }
 
     .playbar {
-        width: 88vw;
+        width: calc(100vw - 60px);
     }
 
     .hamburger {
@@ -305,6 +310,30 @@ body{
     }
 
     .seekbar {
-        width: 90%;
+        width: calc(100vw - 70px);
+    }
+
+    .cardContainer {
+        justify-content: center;
+        margin: 0;
+    }
+
+    .card {
+        width: 90vw;
+    }
+
+    .spotifyPlaylists h1 {
+        margin-bottom: 12px;
+        font-size: 24px;
+    }
+
+    .close {
+        display: block;
+    }
+
+    .aboveBar {
+        flex-direction: column;
+        gap: 23px;
+        align-items: center;
     }
 }
