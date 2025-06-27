@@ -230,6 +230,10 @@ body{
     width: 344px;
 }
 
+.info div {
+    word-break: break-all;
+}
+
 .playnow{
     display: flex;
     justify-content: center;
@@ -275,11 +279,24 @@ body{
     margin: 20px 0;
 }
 
-.songinfo, .songtime {
+.timevol {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.songinfo {
     color: rgb(34, 34, 34);
     font-size: 16px;
     font-weight: bold;
     width: 250px;
+}
+
+.songtime {
+    color: rgb(34, 34, 34);
+    font-size: 16px;
+    font-weight: bold;
+    width: 125px;
 }
 
 @media (max-width: 1350px) {
@@ -290,6 +307,11 @@ body{
         z-index: 1;
         width: 370px;
         background-color: black;
+        padding: 0;
+    }
+
+    .songinfo, .songtime {
+        width: auto;
     }
 
     .close {
