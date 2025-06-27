@@ -93,7 +93,7 @@ body{
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 70vh;
 }
 
@@ -186,6 +186,17 @@ body{
     margin-bottom: 44px;
 }
 
+.hamburger {
+    display: none;
+}
+
+.hamburgerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+
 .songbuttons{
     display: flex;
     justify-content: center;
@@ -262,4 +273,34 @@ body{
     color: rgb(34, 34, 34);
     font-size: 16px;
     font-weight: bold;
+}
+
+@media (max-width: 1350px) {
+    .left{
+        position: absolute;
+        left: -120%;
+        transition: all .3s;
+        z-index: 1;
+        width: 370px;
+        background-color: black;
+    }
+
+    .close {
+        position: absolute;
+        right: 31px;
+        top: 25px;
+        width: 29px;
+    }
+
+    .right {
+        width: 100vw;;
+    }
+
+    .playbar {
+        width: 95vw;
+    }
+
+    .hamburger {
+        display: block;
+    }
 }
