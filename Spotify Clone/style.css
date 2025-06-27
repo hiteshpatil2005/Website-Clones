@@ -177,7 +177,7 @@ body{
     width: 90%;
     padding: 12px;
     width: 70vw;
-    height: 40px;
+    min-height: 40px;
 }
 
 .songlist {
@@ -297,10 +297,14 @@ body{
     }
 
     .playbar {
-        width: 95vw;
+        width: 88vw;
     }
 
     .hamburger {
         display: block;
+    }
+
+    .seekbar {
+        width: 90%;
     }
 }
