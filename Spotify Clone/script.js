@@ -1,6 +1,7 @@
 
 let currentSong = new Audio();
 let songs;
+let currFolder;
 
 function convertToMinutesSeconds(totalSeconds) {
 
@@ -18,8 +19,9 @@ function convertToMinutesSeconds(totalSeconds) {
     return `${formattedMinutes}:${formattedSeconds}`;
 }
 
-async function getSongs() {
-    let a = await fetch('http://127.0.0.1:3000/songs/')
+async function getSongs(folder) {
+    currFolder = folder;
+    let a = await fetch(`http://127.0.0.1:3000/${currFolder}/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -30,14 +32,14 @@ async function getSongs() {
         const element = as[index];
 
         if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split("/songs/")[1]);
+            songs.push(element.href.split(`/${currFolder}/`)[1]);
         }
     }
     return songs;
 }
 
 const playMusic = (track, pause = false) => {
-    currentSong.src = "/songs/" + track;
+    currentSong.src = `/${currFolder}/` + track;
 
     if (!pause) {
         currentSong.play();
@@ -51,7 +53,7 @@ const playMusic = (track, pause = false) => {
 async function main() {
 
     //getting list of all the songs
-    songs = await getSongs()
+    songs = await getSongs("songs/ncs")
     playMusic(songs[0], true)
 
     //Show all the songs in the playist
