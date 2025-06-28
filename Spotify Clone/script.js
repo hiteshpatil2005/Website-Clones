@@ -26,7 +26,7 @@ async function getSongs(folder) {
     let div = document.createElement("div")
     div.innerHTML = response;
     let as = div.getElementsByTagName("a")
-    let songs = []
+    songs = []
 
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
@@ -35,29 +35,10 @@ async function getSongs(folder) {
             songs.push(element.href.split(`/${currFolder}/`)[1]);
         }
     }
-    return songs;
-}
-
-const playMusic = (track, pause = false) => {
-    currentSong.src = `/${currFolder}/` + track;
-
-    if (!pause) {
-        currentSong.play();
-        play.src = "Assets/pause.svg";
-    }
-
-    document.querySelector(".songinfo").innerHTML = decodeURI(track)
-    document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
-}
-
-async function main() {
-
-    //getting list of all the songs
-    songs = await getSongs("songs/ncs")
-    playMusic(songs[0], true)
 
     //Show all the songs in the playist
     let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0]
+    songUL.innerHTML = ""
     for (const song of songs) {
         songUL.innerHTML = songUL.innerHTML + `<li><img class="invert" src="Assets/music.svg" alt="music">
                                 <div class="info">
@@ -75,6 +56,26 @@ async function main() {
             playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
         })
     })
+}
+
+const playMusic = (track, pause = false) => {
+    currentSong.src = `/${currFolder}/` + track;
+
+    if (!pause) {
+        currentSong.play();
+        play.src = "Assets/pause.svg";
+    }
+
+    document.querySelector(".songinfo").innerHTML = decodeURI(track)
+    document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
+    
+}
+
+async function main() {
+
+    //getting list of all the songs
+    await getSongs("songs/ncs")
+    playMusic(songs[0], true)
 
     //Attaching event listener to play,next and previous
     play.addEventListener("click", () => {
@@ -124,6 +125,13 @@ async function main() {
 
     document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change",(e) =>{
         currentSong.volume = parseInt(e.target.value)/100
+    })
+
+    Array.from(document.getElementsByClassName("card")).forEach(e => {
+        e.addEventListener("click", async item => {
+            songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`)
+            
+        })
     })
 }
 
