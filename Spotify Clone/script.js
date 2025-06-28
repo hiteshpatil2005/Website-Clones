@@ -68,7 +68,20 @@ const playMusic = (track, pause = false) => {
 
     document.querySelector(".songinfo").innerHTML = decodeURI(track)
     document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
-    
+
+}
+
+async function displayAlbums() {
+    let a = await fetch(`http://127.0.0.1:3000/songs/`)
+    let response = await a.text();
+    let div = document.createElement("div")
+    div.innerHTML = response;
+    let anchors = div.getElementsByTagName("a")
+    Array.from(anchors).forEach(e => {
+        if(e.href.includes("/songs")) {
+            e.href.split("/").slice(-2)[0]
+        }
+    })
 }
 
 async function main() {
@@ -76,6 +89,9 @@ async function main() {
     //getting list of all the songs
     await getSongs("songs/ncs")
     playMusic(songs[0], true)
+
+    //Display all the albums on the page
+    displayAlbums()
 
     //Attaching event listener to play,next and previous
     play.addEventListener("click", () => {
@@ -92,11 +108,11 @@ async function main() {
     // Listen for time update event
     currentSong.addEventListener("timeupdate", () => {
         document.querySelector(".songtime").innerHTML = `${convertToMinutesSeconds(currentSong.currentTime)} / ${convertToMinutesSeconds(currentSong.duration)}`;
-        document.querySelector(".circle").style.left = (currentSong.currentTime/ currentSong.duration) * 100 + "%";
+        document.querySelector(".circle").style.left = (currentSong.currentTime / currentSong.duration) * 100 + "%";
     })
 
     document.querySelector(".seekbar").addEventListener("click", (e) => {
-        let percent = (e.offsetX/e.target.getBoundingClientRect().width) * 100 ;
+        let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
         document.querySelector(".circle").style.left = percent + "%";
         currentSong.currentTime = (currentSong.duration) * percent / 100;
     })
@@ -111,26 +127,26 @@ async function main() {
 
     previous.addEventListener("click", () => {
         let index = songs.indexOf(currentSong.src.split("/songs/").slice(-1)[0]);
-        if ((index-1) >= 0) {
-            playMusic(songs[index-1])
+        if ((index - 1) >= 0) {
+            playMusic(songs[index - 1])
         }
     })
 
     next.addEventListener("click", () => {
         let index = songs.indexOf(currentSong.src.split("/songs/").slice(-1)[0]);
-        if ((index+1) < songs.length) {
-            playMusic(songs[index+1])
+        if ((index + 1) < songs.length) {
+            playMusic(songs[index + 1])
         }
     })
 
-    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change",(e) =>{
-        currentSong.volume = parseInt(e.target.value)/100
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
+        currentSong.volume = parseInt(e.target.value) / 100
     })
 
     Array.from(document.getElementsByClassName("card")).forEach(e => {
         e.addEventListener("click", async item => {
             songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`)
-            
+
         })
     })
 }
