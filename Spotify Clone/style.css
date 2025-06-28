@@ -108,6 +108,12 @@ body{
     border-radius: 5px;
     background-color: #252525;
     position: relative;
+    transition: all .9s;
+}
+
+.card:hover {
+    background-color: rgb(120, 120, 120);
+    cursor: pointer;
 }
 
 .card > *{
@@ -375,5 +381,12 @@ body{
         align-items: center;
         flex-direction: column;
         gap: 13px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .card {
+        width: 84vw;
     }
 }
