@@ -368,7 +368,7 @@ body{
     }
 
     .card {
-        width: 60vw;
+        width: 55vw;
     }
 
     .spotifyPlaylists h1 {
@@ -393,11 +393,15 @@ body{
         flex-direction: column;
         gap: 13px;
     }
+
+    .cardContainer {
+        max-height: 50vh;
+    }
 }
 
 @media (max-width: 500px) {
 
     .card {
-        width: 84vw;
+        width: auto;
     }
 }
