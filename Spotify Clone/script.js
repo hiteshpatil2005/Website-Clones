@@ -21,7 +21,6 @@ function convertToMinutesSeconds(totalSeconds) {
 async function getSongs() {
     let a = await fetch('http://127.0.0.1:3000/songs/')
     let response = await a.text();
-    console.log(response)
     let div = document.createElement("div")
     div.innerHTML = response;
     let as = div.getElementsByTagName("a")
@@ -71,7 +70,6 @@ async function main() {
 
     Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e => {
         e.addEventListener("click", element => {
-            console.log(e.querySelector(".info").firstElementChild.innerHTML)
             playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
         })
     })
@@ -90,7 +88,6 @@ async function main() {
 
     // Listen for time update event
     currentSong.addEventListener("timeupdate", () => {
-        console.log(currentSong.currentTime, currentSong.duration);
         document.querySelector(".songtime").innerHTML = `${convertToMinutesSeconds(currentSong.currentTime)} / ${convertToMinutesSeconds(currentSong.duration)}`;
         document.querySelector(".circle").style.left = (currentSong.currentTime/ currentSong.duration) * 100 + "%";
     })
@@ -121,6 +118,10 @@ async function main() {
         if ((index+1) < songs.length) {
             playMusic(songs[index+1])
         }
+    })
+
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change",(e) =>{
+        currentSong.volume = parseInt(e.target.value)/100
     })
 }
 

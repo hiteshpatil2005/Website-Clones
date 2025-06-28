@@ -299,7 +299,15 @@ body{
     width: 125px;
 }
 
-@media (max-width: 1350px) {
+.volume {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+
+@media (max-width: 1200px) {
     .left{
         position: absolute;
         left: -120%;
@@ -343,7 +351,7 @@ body{
     }
 
     .card {
-        width: 90vw;
+        width: 60vw;
     }
 
     .spotifyPlaylists h1 {
@@ -359,5 +367,13 @@ body{
         flex-direction: column;
         gap: 23px;
         align-items: center;
+    }
+
+    .timevol {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        gap: 13px;
     }
 }
