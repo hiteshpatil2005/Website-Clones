@@ -103,7 +103,7 @@ body{
     gap: 10px;
     flex-wrap: wrap;
     overflow-y: auto;
-    max-height: 70vh;
+    max-height: 60vh;
 }
 
 .card{
@@ -204,6 +204,7 @@ body{
 
 .hamburger {
     display: none;
+    cursor: pointer;
 }
 
 .hamburgerContainer {
@@ -315,6 +316,11 @@ body{
     justify-content: center;
     align-items: center;
     gap: 12px;
+    cursor: pointer;
+}
+
+.range input {
+    cursor: pointer;
 }
 
 
