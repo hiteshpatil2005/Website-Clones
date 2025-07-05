@@ -1,0 +1,20 @@
+# Node.js
+node_modules/
+package-lock.json
+
+# Tailwind
+src/output.css
+src/output.css.map
+
+# Logs
+*.log
+
+# Environment
+.env
+
+# VS Code
+.vscode/
+
+# System
+.DS_Store
+Thumbs.db
